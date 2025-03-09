@@ -1,0 +1,20 @@
+<a
+  class="list-group list-style-none pb-2"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+>
+  <div class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <h2>{{ recipe.name }}</h2>
+      <p>{{ recipe.description }}</p>
+    </div>
+    <span>
+      <img
+        class="img-responsive"
+        src="{{ recipe.imagePath }}"
+        alt="{{ recipe.name }}"
+        style="max-height: 50px"
+      />
+    </span>
+  </div>
+</a>

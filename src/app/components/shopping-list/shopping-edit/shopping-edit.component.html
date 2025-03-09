@@ -1,0 +1,142 @@
+<div class="row">
+  <div class="col-xs-12">
+    <!-- <form #ingForm="ngForm" (ngSubmit)="onSubmit(ingForm)">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ingName"
+            ngModel
+            required
+            #ingName="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="ingName.invalid && ingName.touched"
+          >
+            please enter vaild name
+          </div>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="ingAmount"
+            ngModel
+            required
+            #ingAmount="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="ingAmount.invalid && ingAmount.touched"
+          >
+            please enter vaild number
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gmail">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            ngModel
+            name="email"
+            #email="ngModel"
+            required
+            email
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="email.touched && email.errors?.['required']"
+          >
+            please enter email
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="email.touched && email.invalid && !email.errors?.['required']"
+          >
+            please enter valid email
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!ingForm.valid"
+          >
+            Add
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mx-2"
+            (click)="onClear(ingForm)"
+          >
+            Clear
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onDelte()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </form> -->
+
+    <form (ngSubmit)="onSubmit(ingForm)" #ingForm="ngForm">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            ngModel
+            required
+            #name="ngModel"
+          />
+          <div *ngIf="name.invalid && name.touched">name is requried</div>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="amount"
+            ngModel
+            required
+            #amount="ngModel"
+            pattern="^[1-9]+[0-9]*$"
+          />
+          <div *ngIf="amount.invalid && amount.touched">Amount is requried</div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="ingForm.invalid"
+          >
+            {{ isEditingIng ? "Update" : "Add" }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mx-2"
+            (click)="onClear(ingForm)"
+          >
+            Clear
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onDelte()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="container">
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-2">
+      <div class="col-md-12 d-flex gap-1 justify-content-end">
+        <button class="btn btn-primary">
+          {{ isEdit ? "Update" : "Save" }}
+        </button>
+        <button class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="" class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="" class="form-label">Image URL</label>
+          <input type="text" class="form-control" formControlName="imagePath" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="" class="form-label">Description</label>
+          <textarea
+            rows="4"
+            class="form-control"
+            formControlName="description"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group" formArrayName="ingredients">
+          <label class="form-label">Ingredients</label>
+          <div *ngFor="let ing of controls; let i = index">
+            <div class="row p-1" [formGroupName]="i">
+              <div class="col-md-5">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="ingName"
+                />
+              </div>
+              <div class="col-md-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="ingAmount"
+                />
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-danger" (click)="onRemoveIng(i)">
+                  X
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-2" (click)="onAddIng()">Add</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-10">
+    <app-shopping-edit></app-shopping-edit>
+    <hr />
+  </div>
+  <div class="col-md-5">
+    <ul
+      class="list-group p-1"
+      *ngFor="let ingredient of ingredients; let i = index"
+    >
+      <li class="list-group-item" (click)="onSelectIng(i)">
+        {{ ingredient.name }} ({{ ingredient.amount }})
+      </li>
+    </ul>
+  </div>
+</div>
